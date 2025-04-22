@@ -1,29 +1,32 @@
-const meuNome = document.querySelector('.meu-nome');
-const fName = meuNome.innerHTML;
-const botaoVerMais = document.querySelector('button');
-const habilidades = document.querySelectorAll('.escondido');
-const node = document.querySelector('#fundo')
-meuNome.innerHTML='';
-
-function cliqueVer (e) {
-    habilidades.forEach( (elemento) => {
-        if (elemento.classList.contains('escondido')) {
-            elemento.classList.remove('escondido');
-            elemento.classList.add('visivel');
-            botaoVerMais.innerHTML = 'Ver menos';
-        } else {
-            elemento.classList.add('escondido');
-            elemento.classList.remove('visivel');
-            botaoVerMais.innerHTML = 'Ver mais';
-        }
-    } )
-}
-
-function maisHabilidades (elemento) {
-    elemento.addEventListener('click', cliqueVer)
-}
-
-
-/* typeWriter(fName); */
-maisHabilidades(botaoVerMais);
-
+document.addEventListener('DOMContentLoaded', () => {
+    const meuNome = document.querySelector('.meu-nome');
+    const fName = meuNome.innerHTML;
+    const botaoVerMais = document.querySelector('.github-link button');
+    const projetosEscondidos = document.querySelectorAll('.pro.escondido');
+  
+    // Animação de digitação (opcional)
+    meuNome.innerHTML = '';
+    let i = 0;
+    function typeWriter() {
+      if (i < fName.length) {
+        meuNome.innerHTML += fName.charAt(i);
+        i++;
+        setTimeout(typeWriter, 75);
+      }
+    }
+    typeWriter();
+  
+    // Função para alternar visibilidade dos projetos "escondidos"
+    function cliqueVer() {
+      const algumEscondido = Array.from(projetosEscondidos).some(proj => proj.classList.contains('escondido'));
+  
+      projetosEscondidos.forEach(proj => {
+        proj.classList.toggle('escondido');
+      });
+  
+      botaoVerMais.innerText = algumEscondido ? 'Ver menos' : 'Ver mais';
+    }
+  
+    botaoVerMais.addEventListener('click', cliqueVer);
+  });
+  
