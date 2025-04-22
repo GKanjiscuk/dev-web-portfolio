@@ -8,12 +8,15 @@ app.set('view engine', 'ejs');
 app.get('/', (req, res) => {
     const projetos = [
       { link: 'https://github.com/AgileKrakens/DemoQuerycy', imagem:'/assets/img/demoquerycy.jpg' },
-      { link: 'https://github.com/ORBIS-2DSM-API/orbis-main', imagem:'/assets/img/helpnei3.webp'}
+      { link: '/helpnei', imagem:'/assets/img/helpnei3.webp'}
     ];
   
     res.render('index', {projetos: projetos});
   });
 
+  app.get('/helpnei', (req, res) => {
+    res.render('helpnei');
+});
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);
 });
