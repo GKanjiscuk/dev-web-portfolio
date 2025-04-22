@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const botaoVerMais = document.querySelector('.github-link button');
     const projetosEscondidos = document.querySelectorAll('.pro.escondido');
   
-    // Animação de digitação (opcional)
     meuNome.innerHTML = '';
     let i = 0;
     function typeWriter() {
@@ -16,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     typeWriter();
   
-    // Função para alternar visibilidade dos projetos "escondidos"
     function cliqueVer() {
       const algumEscondido = Array.from(projetosEscondidos).some(proj => proj.classList.contains('escondido'));
   
